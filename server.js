@@ -1,6 +1,6 @@
 var express = require('express'),
   app = express(),
-  port = process.env.PORT || 3000,
+  port = process.env.PORT || 3001,
   mongoose = require('mongoose'),
   Task = require('./api/models/todoListModel'),
   bodyParser = require('body-parser');
@@ -10,9 +10,11 @@ mongoose.connect('mongodb://localhost/Tododb');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
+app.use(express.static(__dirname + '/public'));
 var routes = require('./api/routes/todoListRoutes');
 routes(app);
 
 app.listen(port);
 console.log('todo list RESTful API server start on: ' + port)
+
+//export = module.exports = app

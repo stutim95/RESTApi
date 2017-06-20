@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
       if(err)
         res.send(err);
       res.json(task);
+      //res.sendFile('./public/views/index.html');
     });
   };
 
